@@ -12,7 +12,7 @@ RUN apt update && apt install -y --no-install-recommends --no-install-suggests f
 COPY --from=builder /root/.local /usr/local
 COPY . .
 
-CMD ["/usr/local/bin/gunicorn", "app:app", "&", "/usr/local/bin/supervisord", "-c", "/ytdlbot/conf/supervisor_main.conf"]
+#CMD ["/usr/local/bin/gunicorn", "app:app", "&", "/usr/local/bin/supervisord", "-c", "/ytdlbot/conf/supervisor_main.conf"]
 #FROM python:3.11 as builder
 #ADD requirements.txt /tmp/
 #RUN apt update && apt install -y git && pip3 install --user -r /tmp/requirements.txt && rm /tmp/requirements.txt
@@ -26,5 +26,5 @@ CMD ["/usr/local/bin/gunicorn", "app:app", "&", "/usr/local/bin/supervisord", "-
 #COPY --from=builder /root/.local /usr/local
 #COPY . /ytdlbot
 
-#CMD ["gunicorn", "app:app"] && supervisord -c /ytdlbot/conf/supervisor_main.conf
+CMD ["gunicorn", "app:app"] && supervisord -c /ytdlbot/conf/supervisor_main.conf
 #CMD ["/usr/local/bin/gunicorn", "app:app", "&", "/usr/local/bin/supervisord", "-c", "/ytdlbot/conf/supervisor_main.conf"]
