@@ -11,4 +11,4 @@ RUN apt update && apt install -y --no-install-recommends --no-install-suggests f
 COPY --from=builder /root/.local /usr/local
 COPY . /ytdlbot
 
-CMD ["gunicorn app:app & python3 bot.py", "/usr/local/bin/supervisord", "-c" ,"/ytdlbot/conf/supervisor_main.conf"]
+CMD ["gunicorn app", "/usr/local/bin/supervisord", "-c" ,"/ytdlbot/conf/supervisor_main.conf"]
